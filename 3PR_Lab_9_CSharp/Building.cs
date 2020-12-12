@@ -23,19 +23,37 @@ namespace _3PR_Lab_9_CSharp
 		// Коэффициент устойчивости.
 		private double stabilityFactor;
 		/* Функция по установке переданных значений в свойства экземпляра класса Building. */
-		private void setBuiling(string typeOfBuilding, double sideLength, double basementHeight, double floorHeight, int floorAmount, double stabilityFactor)
+		private void setBuilding(string typeOfBuilding, double sideLength, double basementHeight, double floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount)
 		{
 			this.typeOfBuilding = typeOfBuilding;
 			this.sideLength = sideLength;
 			this.basementHeight = basementHeight;
 			this.floorHeight = floorHeight;
 			this.floorAmount = floorAmount;
-			this.stabilityFactor = stabilityFactor;
+			this.stabilityFactor = (float)(sideLength * sideLength * Math.Sqrt(basementHeight)) / (floorHeight * floorAmount);
+			this.facade.WindowsAmount = windowsAmount;
+			this.facade.OpenedWindowsAmount = openedWindowsAmount;
 		}
-		// Конструктор.
+		// Конструктор без параметров.
 		public Building()
 		{
-			this.initBuilding();
+			this.setBuilding("Жилое здание", 1.0, 1.0, 1.0, 1, 0, 0);
+			countOfBuildings++;
+		}
+		// Конструктор с 1 параметром.
+		public Building(float sideLength)
+		{
+			this.setBuilding("Жилое здание", sideLength, 1.0, 1.0, 1, 0, 0);
+			if (stabilityFactor < 1)
+				this.setBuilding("Жилое здание", 1.0, 1.0, 1.0, 1, 0, 0);
+			countOfBuildings++;
+		}
+		// Конструктор со всеми параметрами.
+		public Building(string typeOfBuilding, float sideLength, float basementHeight, float floorHeight, int floorAmount, int windowsAmount, int openedWindowsAmount)
+		{
+			this.setBuilding(typeOfBuilding, sideLength, basementHeight, floorHeight, floorAmount, windowsAmount, openedWindowsAmount);
+			if (stabilityFactor < 1)
+				this.setBuilding("Жилое здание", 1.0, 1.0, 1.0, 1, 0, 0);
 			countOfBuildings++;
 		}
 		// Название строительной компании.
@@ -62,7 +80,7 @@ namespace _3PR_Lab_9_CSharp
 		/* Функция по заданию свойств по умолчанию экземпляра класса Building. */
 		public void initBuilding()
 		{
-			setBuiling("Жилое здание", 1.0, 1.0, 1.0, 1, 1.0);
+			setBuilding("Жилое здание", 1.0, 1.0, 1.0, 1, 0, 0);
 			facade.WindowsAmount = 0;
 			facade.OpenedWindowsAmount = 0;
 		}

@@ -113,6 +113,16 @@ namespace _3PR_Lab_9_CSharp
 			Building.companyName = "Авангард";
 			Console.WriteLine("\nОбщее количество когда-либо построенных этой компанией зданий: " + Building.getCountOfBuildings());
 			secondB.getBuilding();
+
+			/* Использование конструкторов. */
+			Console.WriteLine("\nИспользование конструкторов: ");
+			Building b1 = new Building();
+			Building b2 = new Building(5);
+			Building b3 = new Building("Офисное здание", 5, 1, 2, 3, 5, 3);
+
+			b1.getBuilding();
+			b2.getBuilding();
+			b3.getBuilding();
 		}
 	}
 }
