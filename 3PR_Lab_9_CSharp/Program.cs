@@ -21,7 +21,7 @@ namespace _3PR_Lab_9_CSharp
 
 			firstBuilding.addFloors();
 			firstBuilding.removeFloors();
-			/*............................................*/
+			/*............................................*/ 
 
 			/* Список объектов. */
 			List<Building> firstDynamicArray = new List<Building>();
