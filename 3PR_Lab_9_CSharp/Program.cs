@@ -123,6 +123,13 @@ namespace _3PR_Lab_9_CSharp
 			b1.getBuilding();
 			b2.getBuilding();
 			b3.getBuilding();
+
+			/* Инициализация массива. */
+			Building[] mB = new Building[5];
+			for (int i = 0; i < 5; i++)
+			{
+				mB[i] = new Building(i);
+			}
 		}
 	}
 }
